@@ -1,9 +1,12 @@
-import React, {useState, useEffect, useCallback, useRef} from "react";
+import React, {useState, useContext, useRef} from "react";
 import './style.scss'
 import * as wanakana from 'wanakana';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState, setTGuess, registerGuess} from "../../vocabularySlice";
 import {findWordAtThreshold} from "../data/words";
+
+import Papa from 'papaparse';
+import WordDataContext from "../../wordDataProvider";
 
 const jsQUEST = (window as any).jsQUEST
 
@@ -16,14 +19,11 @@ const gamma = 0.5;
 
 export const KanjiTestPage = () => {
     const [userGuess, setUserGuess] = useState("");
-    const [kanaPreview, setKanaPreview] = useState("");
     const tGuess = useSelector((s: RootState) => s.vocabulary.tGuess)
     const questRef = useRef(jsQUEST.QuestCreate(tGuess, tGuessSd, pThreshold, beta, delta, gamma))
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        setKanaPreview(wanakana.toKatakana(userGuess));
-    }, [userGuess]);
+    const kanaPreview = wanakana.toHiragana(userGuess)
+    const wordData = useContext(WordDataContext);
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
@@ -31,12 +31,15 @@ export const KanjiTestPage = () => {
         }
     }
 
-    const word = findWordAtThreshold(tGuess)
+    const word = findWordAtThreshold(wordData, tGuess)
 
     // https://kurokida.github.io/jsQUEST/
     const handleSubmit = () => {
-        console.log("Submitting")
-        const correct = false
+        const normalizedUserGuess = wanakana.toKatakana(userGuess)
+        const normalizedKana = wanakana.toKatakana(word.kana)
+        const correct = normalizedUserGuess === normalizedKana
+        console.log("Submitting", correct, normalizedKana, normalizedUserGuess)
+
         const response = correct ? 1 : 0
         questRef.current = jsQUEST.QuestUpdate(questRef.current, tGuess, response);
 

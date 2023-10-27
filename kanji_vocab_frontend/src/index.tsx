@@ -4,21 +4,42 @@ import './index.css';
 import './style.scss'
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
+import Papa from 'papaparse';
 import {store} from "./store";
 import {KanjiTestPage} from "./main/kanji_test/kanji_test_page";
+import { WordDataProvider } from './wordDataProvider';
+
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
-root.render(
-  <React.StrictMode>
-      <Provider store={store}>
-          <div className="app">
-              <KanjiTestPage />
-          </div>
-      </Provider>
-  </React.StrictMode>
-);
+
+fetch('/filtered_words.csv')
+    .then(response => response.text())
+    .then(data => {
+        const parsedData = Papa.parse(data, {
+            header: true,
+            skipEmptyLines: true
+        });
+
+        const transformedData = parsedData.data.map((entry: any) => ({
+            kanji: entry.Word,
+            kana: entry.Kana,
+            logFrequency: parseFloat(entry.Log_Frequency)
+        })).sort((a, b) => a.logFrequency - b.logFrequency);
+
+        root.render(
+            <React.StrictMode>
+                <WordDataProvider value={transformedData}>
+                    <Provider store={store}>
+                        <div className="app">
+                            <KanjiTestPage />
+                        </div>
+                    </Provider>
+                </WordDataProvider>
+            </React.StrictMode>
+        );
+    });
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

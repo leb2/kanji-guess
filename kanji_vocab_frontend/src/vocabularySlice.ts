@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {UserGuess} from "./types";
 
 const initialState = {
-  tGuess: -1 as number,
+  tGuess: 2.5 as number,
   userGuesses: [] as UserGuess[],
 };
 

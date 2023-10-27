@@ -11,6 +11,7 @@
     "@types/node": "^16.18.59",
     "@types/react": "^18.2.33",
     "@types/react-dom": "^18.2.14",
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.3",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/papaparse": "^5.3.10",
     "@types/react-redux": "^7.1.28",
     "@types/wanakana": "^4.0.5",
     "sass": "^1.69.5"
