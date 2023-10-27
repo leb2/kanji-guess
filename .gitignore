@@ -1,0 +1,37 @@
+# .gitignore
+
+# Python related
+*.pyc
+*.pyo
+*.egg-info/
+__pycache__/
+*.log
+*.pot
+*.py[co]
+*.sqlite3
+db.sqlite3
+venv/
+
+# FastAPI uploads or temporary files
+/uploads/
+
+# Node and npm related
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+.DS_Store
+
+# React build
+/build/
+
+# TypeScript
+*.tsbuildinfo
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn

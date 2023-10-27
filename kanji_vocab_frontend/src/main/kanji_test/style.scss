@@ -1,0 +1,116 @@
+.kanji-test {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+
+    .kanji-test-inner {
+        width: 100%;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .input-row {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .submit-button {
+            padding: 8px 24px;
+            background-color: #3498db;
+            color: white;
+            width: 100px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.2s;
+            text-transform: lowercase;
+
+            &:hover {
+                background-color: darken(#3498db, 10%);
+            }
+
+            &:active {
+                transform: scale(0.97);
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 0 2px lighten(#3498db, 20%);
+            }
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .japanese-word {
+            margin-top: 24px;
+            margin-bottom: 14px;
+            font-size: 60px;
+            font-weight: 200;
+            font-family: 'Noto Serif JP', serif;
+            background: rgba(white, 0.8);
+            border-radius: 12px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            align-self: stretch;
+            justify-content: center;
+            color: #483232;
+        }
+
+        .kana-preview {
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        .translation-input {
+            width: 80%;
+            padding: 14px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .suggested-translations {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+
+            p {
+                margin: 5px 0;
+                color: #888;
+                font-size: 16px;
+            }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background-color: #f0f0f0;
+            margin-top: 20px;
+            border-radius: 2px;
+            overflow: hidden;
+
+            .progress {
+                height: 5px;
+                width: 50%; // You can adjust this based on progress
+                background-color: #3498db;
+            }
+        }
+    }
+}
