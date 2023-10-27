@@ -25,7 +25,8 @@ fetch('/filtered_words.csv')
         const transformedData = parsedData.data.map((entry: any) => ({
             kanji: entry.Word,
             kana: entry.Kana,
-            logFrequency: parseFloat(entry.Log_Frequency)
+            logFrequency: parseFloat(entry.Log_Frequency),
+            rank: parseFloat(entry.Rank)
         })).sort((a, b) => a.logFrequency - b.logFrequency);
 
         root.render(

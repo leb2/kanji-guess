@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {UserGuess} from "./types";
+import {gaussianRandom} from "./util";
 
 const initialState = {
-  tGuess: 2.5 as number,
+  tGuess: 2.5 + gaussianRandom(0, 0.3) as number,
   userGuesses: [] as UserGuess[],
 };
 

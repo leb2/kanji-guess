@@ -5,7 +5,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState, setTGuess, registerGuess} from "../../vocabularySlice";
 import {findWordAtThreshold} from "../data/words";
 
-import Papa from 'papaparse';
 import WordDataContext from "../../wordDataProvider";
 
 const jsQUEST = (window as any).jsQUEST
@@ -22,7 +21,7 @@ export const KanjiTestPage = () => {
     const tGuess = useSelector((s: RootState) => s.vocabulary.tGuess)
     const questRef = useRef(jsQUEST.QuestCreate(tGuess, tGuessSd, pThreshold, beta, delta, gamma))
     const dispatch = useDispatch()
-    const kanaPreview = wanakana.toHiragana(userGuess)
+    const kanaPreview = wanakana.toHiragana(userGuess, {IMEMode: true})
     const wordData = useContext(WordDataContext);
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -35,8 +34,8 @@ export const KanjiTestPage = () => {
 
     // https://kurokida.github.io/jsQUEST/
     const handleSubmit = () => {
-        const normalizedUserGuess = wanakana.toKatakana(userGuess)
-        const normalizedKana = wanakana.toKatakana(word.kana)
+        const normalizedUserGuess = wanakana.toHiragana(userGuess, {IMEMode: true})
+        const normalizedKana = wanakana.toHiragana(word.kana, {IMEMode: true})
         const correct = normalizedUserGuess === normalizedKana
         console.log("Submitting", correct, normalizedKana, normalizedUserGuess)
 
@@ -45,7 +44,6 @@ export const KanjiTestPage = () => {
 
         // Set the new intensity
         const tTest = jsQUEST.QuestQuantile(questRef.current);
-        console.log("Updating new ", tGuess, tTest)
         dispatch(setTGuess(tTest))
         dispatch(registerGuess({
             word,
@@ -82,6 +80,9 @@ export const KanjiTestPage = () => {
                     <button onClick={handleSubmit} className="submit-button">
                         提出
                     </button>
+                </div>
+                <div className="mt-2">
+                    T guess: { word.logFrequency }, { word.rank}
                 </div>
             </div>
         </div>
