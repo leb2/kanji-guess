@@ -20,7 +20,7 @@ export const AppInner = () => {
     const questRef = useRef(jsQUEST.QuestCreate(tGuess, tGuessSd, pThreshold, beta, delta, gamma, grain, range))
 
     return (
-        <div className="kanji-test container">
+        <div className="kanji-test">
             { userGuesses.length < NUM_QUESTIONS ? (
                 <KanjiTestPage questRef={questRef} />
             ) : (

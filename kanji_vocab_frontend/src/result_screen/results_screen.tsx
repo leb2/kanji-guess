@@ -19,7 +19,7 @@ export const ResultsScreen = (props: { questRef: MutableRefObject<any> }) => {
         <div className="results-screen page">
             <div className="result-box">
                 <div className="desc">
-                    Number of words known:
+                    Your estimated vocabulary size is
                 </div>
                 <div className="rank">
                     { estimatedRank }

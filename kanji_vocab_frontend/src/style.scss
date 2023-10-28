@@ -1,11 +1,9 @@
 @use './base';
 
-.app {
-  height: 100%;
-}
-
 html {
   background: #fdf3f0;
+  height: 100%;
+  position: relative;
 }
 
 
@@ -17,6 +15,8 @@ html {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  position: relative;
+
 }
 
 .page {
@@ -26,6 +26,7 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 .button {
