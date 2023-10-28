@@ -2,7 +2,7 @@
   "name": "kanji_vocab_frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://leb2.github.io/kanji_vocab",
+  "homepage": "https://leb2.github.io/kanji-guess/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^5.17.0",
