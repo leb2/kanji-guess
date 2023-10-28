@@ -14,7 +14,7 @@ const gamma = 0.2; // guess rate
 const grain = 0.01
 const range = 7.7780
 
-export const App = () => {
+export const AppInner = () => {
     const userGuesses = useSelector((s: RootState) => s.vocabulary.userGuesses)
     const tGuess = useSelector((s: RootState) => s.vocabulary.tGuess)
     const questRef = useRef(jsQUEST.QuestCreate(tGuess, tGuessSd, pThreshold, beta, delta, gamma, grain, range))
@@ -28,4 +28,9 @@ export const App = () => {
             )}
         </div>
     )
+}
+
+export const App = () => {
+    const version = useSelector((s: RootState) => s.vocabulary.version)
+    return <AppInner key={version} />
 }
