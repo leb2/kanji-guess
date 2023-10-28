@@ -15,7 +15,7 @@ const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 
-fetch('/final_words.csv')
+fetch('final_words.csv')
     .then(response => response.text())
     .then(data => {
         const parsedData = Papa.parse(data, {
