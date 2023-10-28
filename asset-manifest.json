@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.ead2840a.css",
-    "main.js": "/static/js/main.8713affb.js",
-    "static/js/787.027ae017.chunk.js": "/static/js/787.027ae017.chunk.js",
-    "index.html": "/index.html",
-    "main.ead2840a.css.map": "/static/css/main.ead2840a.css.map",
-    "main.8713affb.js.map": "/static/js/main.8713affb.js.map",
-    "787.027ae017.chunk.js.map": "/static/js/787.027ae017.chunk.js.map"
+    "main.css": "/kanji-guess/static/css/main.ead2840a.css",
+    "main.js": "/kanji-guess/static/js/main.71304828.js",
+    "static/js/787.027ae017.chunk.js": "/kanji-guess/static/js/787.027ae017.chunk.js",
+    "index.html": "/kanji-guess/index.html",
+    "main.ead2840a.css.map": "/kanji-guess/static/css/main.ead2840a.css.map",
+    "main.71304828.js.map": "/kanji-guess/static/js/main.71304828.js.map",
+    "787.027ae017.chunk.js.map": "/kanji-guess/static/js/787.027ae017.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ead2840a.css",
-    "static/js/main.8713affb.js"
+    "static/js/main.71304828.js"
   ]
 }
