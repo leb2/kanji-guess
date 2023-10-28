@@ -1,3 +1,5 @@
+import * as wanakana from "wanakana";
+
 export const gaussianRandom = (mean: number = 0, std: number = 1): number => {
   let u1: number, u2: number;
   do {
@@ -10,3 +12,5 @@ export const gaussianRandom = (mean: number = 0, std: number = 1): number => {
 
   return z0 * std + mean;
 };
+
+export const toKana = (val: string) => wanakana.toHiragana(val, {IMEMode: true})

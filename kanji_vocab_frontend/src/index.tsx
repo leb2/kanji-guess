@@ -6,15 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import Papa from 'papaparse';
 import {store} from "./store";
-import {KanjiTestPage} from "./main/kanji_test/kanji_test_page";
+import {KanjiTestPage} from "./kanji_test/kanji_test_page";
 import { WordDataProvider } from './wordDataProvider';
+import {App} from "./app/app";
 
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 
-fetch('/filtered_words.csv')
+fetch('/final_words.csv')
     .then(response => response.text())
     .then(data => {
         const parsedData = Papa.parse(data, {
@@ -25,7 +26,7 @@ fetch('/filtered_words.csv')
         const transformedData = parsedData.data.map((entry: any) => ({
             kanji: entry.Word,
             kana: entry.Kana,
-            logFrequency: parseFloat(entry.Log_Frequency),
+            logFrequency: parseFloat(entry["Log Frequency"]),
             rank: parseFloat(entry.Rank)
         })).sort((a, b) => a.logFrequency - b.logFrequency);
 
@@ -33,9 +34,7 @@ fetch('/filtered_words.csv')
             <React.StrictMode>
                 <WordDataProvider value={transformedData}>
                     <Provider store={store}>
-                        <div className="app">
-                            <KanjiTestPage />
-                        </div>
+                        <App />
                     </Provider>
                 </WordDataProvider>
             </React.StrictMode>

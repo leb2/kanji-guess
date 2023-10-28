@@ -9,4 +9,5 @@ export type Word = {
 export type UserGuess = {
     word: Word,
     guessValue: string,
+    isCorrect?: boolean
 }

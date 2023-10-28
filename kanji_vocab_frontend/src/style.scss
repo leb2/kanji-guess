@@ -1,5 +1,60 @@
+@use './base';
+
 .app {
-  background: #fdf3f0;
   height: 100%;
 }
 
+html {
+  background: #fdf3f0;
+}
+
+
+
+.kanji-test {
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.page {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  padding: 8px 24px;
+  background-color: lighten(base.$color-primary, 0%);
+  font-weight: bold;
+  color: white;
+  //background: transparent;
+  border: 1px solid base.$color-primary;
+  //color: white;
+  //color: black;
+  //background: rgba(base.$color-primary, 0.1);
+  width: 100px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s, transform 0.2s;
+  text-transform: lowercase;
+
+  &:hover {
+    background-color: darken(base.$color-primary, 10%);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px lighten(#502665, 20%);
+  }
+}

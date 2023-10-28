@@ -1,0 +1,45 @@
+@use "src/base";
+
+
+.results-view {
+  width: 100%;
+  max-width: 400px;
+
+  .results-list {
+    width: 100%;
+    border-radius: 8px;
+    overflow: auto;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: 1px solid base.$color-primary;
+    max-height: 200px;
+
+    .guess-row {
+      width: 100%;
+      padding: 0 12px;
+      display: flex;
+      height: 44px;
+      align-items: center;
+      justify-content: space-between;
+
+      .result-kanji {
+        font-size: 1.15em;
+      }
+
+      .result-guess {
+        text-decoration: line-through;
+        margin-right: 12px;
+        font-size: 1em;
+      }
+
+      &.correct {
+        background-color: #e6ffe6; /* Light green */
+        justify-content: space-between;
+      }
+
+      &.incorrect {
+        background-color: #ffe6e6; /* Light red */
+      }
+    }
+  }
+}
+
