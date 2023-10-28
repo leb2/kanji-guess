@@ -1,5 +1,6 @@
 // Sample data
 import {Word} from "../types";
+import {gaussianRandom} from "../util";
 
 // Modified binary search function
 export const findWordAtThreshold = (words: Word[], threshold: number): Word => {

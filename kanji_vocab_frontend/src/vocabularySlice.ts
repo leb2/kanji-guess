@@ -3,7 +3,7 @@ import {UserGuess} from "./types";
 import {gaussianRandom} from "./util";
 
 const makeInitialState = () => ({
-  tGuess: 2.5 + gaussianRandom(0, 0.1) as number,
+  tGuess: 2.5 as number,
   userGuesses: [] as UserGuess[],
   version: 1
 })

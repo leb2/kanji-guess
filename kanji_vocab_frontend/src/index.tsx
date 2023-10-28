@@ -9,11 +9,13 @@ import {store} from "./store";
 import {KanjiTestPage} from "./kanji_test/kanji_test_page";
 import { WordDataProvider } from './wordDataProvider';
 import {App} from "./app/app";
+import {gaussianRandom} from "./util";
 
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
+
 
 fetch('final_words.csv')
     .then(response => response.text())

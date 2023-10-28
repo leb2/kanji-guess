@@ -26,16 +26,17 @@ export const KanjiTestPage = (props: { questRef: MutableRefObject<any>}) => {
         return wordData.filter(word => !seenWordsSet.has(word.kanji))
     }, [wordData, userGuesses])
 
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             handleSubmit();
         }
     }
 
-    const word = findWordAtThreshold(unseenWords, tGuess)
+    const seed = useMemo(() => gaussianRandom(0, 0.1), [])
+    const word = findWordAtThreshold(unseenWords, tGuess + seed)
     const estimatedRank = useEstimatedRank(questRef)
-
-    const sd = jsQUEST.QuestSd(questRef.current);
 
     // https://kurokida.github.io/jsQUEST/
     const handleSubmit = () => {
@@ -54,6 +55,9 @@ export const KanjiTestPage = (props: { questRef: MutableRefObject<any>}) => {
             guessValue: userGuess,
             isCorrect,
         }))
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
 
         setUserGuess("")
     }
@@ -91,6 +95,7 @@ export const KanjiTestPage = (props: { questRef: MutableRefObject<any>}) => {
                     value={userGuess}
                     onChange={e => setUserGuess(e.target.value)}
                     onKeyDown={handleKeyDown}
+                    ref={inputRef}
                 />
                 <button onClick={handleSubmit} className="button">
                     提出
