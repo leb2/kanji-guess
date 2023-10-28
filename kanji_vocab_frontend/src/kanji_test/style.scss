@@ -38,6 +38,7 @@
         justify-content: center;
         color: darken(#502665, 10%);
         border: 1px solid #502665;
+        position: relative;
     }
 
     .kana-preview-container {
@@ -45,6 +46,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+
+        &.compact {
+            display: none;
+            position: absolute;
+            font-size: 12px !important;
+            left: 0;
+            bottom: 0;
+            height: initial;
+            padding: 8px;
+            font-family: arial, sans-serif;
+            color: #999;
+        }
 
         .instructions {
             letter-spacing: 0.3px;
@@ -100,5 +114,17 @@
         color: #555;
         align-items: center;
         justify-content: space-between;
+    }
+}
+
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+    .kanji-test-inner .kana-preview-container {
+        display: none;
+
+        &.compact {
+            display: block !important;
+        }
     }
 }

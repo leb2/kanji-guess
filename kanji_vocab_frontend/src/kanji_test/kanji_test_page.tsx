@@ -63,6 +63,9 @@ export const KanjiTestPage = (props: { questRef: MutableRefObject<any>}) => {
     }
     const numCorrectGuesses = userGuesses.filter(userGuess => userGuess.isCorrect).length
 
+
+    const instructionsText = "Type the reading in romaji to being."
+    const showInstructions = numGuesses === 0 && !kanaPreview
     return (
         <div className="kanji-test-inner page">
             <div className="progress-bar">
@@ -76,11 +79,16 @@ export const KanjiTestPage = (props: { questRef: MutableRefObject<any>}) => {
                     { estimatedRank }
                 </div>
             </div>
-            <div className="japanese-word">{ word.kanji }</div>
+            <div className="japanese-word">
+                { word.kanji }
+                <div className="kana-preview-container compact">
+                    { showInstructions ?  instructionsText : kanaPreview }
+                </div>
+            </div>
             <div className="kana-preview-container">
-                { numGuesses === 0 && !kanaPreview ? (
+                { showInstructions ? (
                     <div className="instructions">
-                        Type the reading in romaji to being.
+                        { instructionsText }
                     </div>
                 ) : (
                     <div className="kana-preview">
