@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/kanji_vocab/static/css/main.ead2840a.css",
+    "main.js": "/kanji_vocab/static/js/main.c90bd326.js",
+    "static/js/787.027ae017.chunk.js": "/kanji_vocab/static/js/787.027ae017.chunk.js",
+    "index.html": "/kanji_vocab/index.html",
+    "main.ead2840a.css.map": "/kanji_vocab/static/css/main.ead2840a.css.map",
+    "main.c90bd326.js.map": "/kanji_vocab/static/js/main.c90bd326.js.map",
+    "787.027ae017.chunk.js.map": "/kanji_vocab/static/js/787.027ae017.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ead2840a.css",
+    "static/js/main.c90bd326.js"
+  ]
+}
