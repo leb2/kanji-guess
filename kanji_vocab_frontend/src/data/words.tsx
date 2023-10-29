@@ -2,7 +2,6 @@
 import {Word} from "../types";
 import {gaussianRandom} from "../util";
 
-// Modified binary search function
 export const findWordAtThreshold = (words: Word[], threshold: number): Word => {
   let left = 0;
   let right = words.length - 1;
@@ -21,13 +20,18 @@ export const findWordAtThreshold = (words: Word[], threshold: number): Word => {
     }
   }
 
-  // At this point, left and right have crossed over. We'll determine which index is closer to the target frequency.
-  const leftDist = left < words.length ? Math.abs(words[left].logFrequency - threshold) : Infinity;
-  const rightDist = right >= 0 ? Math.abs(words[right].logFrequency - threshold) : Infinity;
+  // After the binary search loop terminates, we will do a linear search
+  // in the range between 'left' and 'right' to find the closest log frequency.
+  let closestWord: Word = words[Math.min(left, words.length - 1)];
+  let closestDistance = Math.abs(closestWord.logFrequency - threshold);
 
-  if (leftDist < rightDist) {
-    return words[left];
-  } else {
-    return words[right];
+  for (let i = left; i <= right && i < words.length; i++) {
+    const currentDistance = Math.abs(words[i].logFrequency - threshold);
+    if (currentDistance < closestDistance) {
+      closestDistance = currentDistance;
+      closestWord = words[i];
+    }
   }
+
+  return closestWord;
 }
