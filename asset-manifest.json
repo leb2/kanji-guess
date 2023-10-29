@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/kanji-guess/static/css/main.7eb54e21.css",
-    "main.js": "/kanji-guess/static/js/main.4c659e29.js",
+    "main.js": "/kanji-guess/static/js/main.122f1192.js",
     "static/js/787.027ae017.chunk.js": "/kanji-guess/static/js/787.027ae017.chunk.js",
     "index.html": "/kanji-guess/index.html",
     "main.7eb54e21.css.map": "/kanji-guess/static/css/main.7eb54e21.css.map",
-    "main.4c659e29.js.map": "/kanji-guess/static/js/main.4c659e29.js.map",
+    "main.122f1192.js.map": "/kanji-guess/static/js/main.122f1192.js.map",
     "787.027ae017.chunk.js.map": "/kanji-guess/static/js/787.027ae017.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7eb54e21.css",
-    "static/js/main.4c659e29.js"
+    "static/js/main.122f1192.js"
   ]
 }
